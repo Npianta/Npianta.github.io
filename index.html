@@ -1,42 +1,256 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Il tuo sito di biglietti</title>
-  <link rel="stylesheet" href="style.css"> <!-- Includi il tuo file CSS per lo stile -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiEvents - Eventi a Milano</title>
+	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <script src="upload_data_from_db.js"></script>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+			margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(to bottom right, red, orange, yellow);
+            color: #fff;
+			font-size: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .event-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 20px auto;
+            max-width: 1000px;
+        }
+
+        .event-card {
+            flex-grow: 1;
+            width: calc(33.33% - 20px);
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0 10px;
+        }
+
+        .event-card:hover {
+            background-color: #eaeaea;
+        }
+
+        .event-image {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .event-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .event-list-item {
+		
+        }
+		
+        .event-details {
+            display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 10px;
+
+        }
+		
+        .event-date {
+            font-size: 12px;
+			font-weight: bold;
+			width: 125px;
+        }
+
+        .event-info {
+            flex-grow: 1;
+        }
+
+        .event-title {
+			font-size: 12px;
+			font-weight: bold;
+        }
+
+        .event-location {
+            color: #888;
+            font-size: 12px;
+        }
+
+		.tap-highlight-color {
+			tap-highlight-color: #ff0000;
+		}
+
+		.tap-highlight-color {
+			-webkit-tap-highlight-color: #ff0000;
+		}
+		
+    </style>
 </head>
 <body>
-  <header>
+    <header>
+        <h1>MiEvents</h1>
+    </header>
+	<div id="datiContainer"></div>
+	<div class="autoplay">
+		<div><img src="image1.png" alt="Image 1" width="500" height="150"></div>
+		<div><img src="image2.png" alt="Image 2" width="500" height="150"></div>
+		<div><img src="image3.png" alt="Image 3" width="500" height="150"></div>
+		<div><img src="image2.png" alt="Image 3" width="500" height="150"></div>
+		<div><img src="image3.png" alt="Image 3" width="500" height="150"></div>
+		<div><img src="image2.png" alt="Image 3" width="500" height="150"></div>
+		<div><img src="image3.png" alt="Image 3" width="500" height="150"></div>
+	</div>
+  <!-- Altri contenuti della pagina -->
+  
+  <!-- Inclusione dei file JavaScript e jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="slick/slick.min.js"></script>
+  <script src="slick1.js"></script>
+</body>
     <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Eventi</a></li>
-        <li><a href="#">Artisti</a></li>
-        <li><a href="#">Contatti</a></li>
-      </ul>
+
     </nav>
-  </header>
-  
-  <main>
-    <section id="hero">
-      <h1>Benvenuto nel nostro sito di biglietti!</h1>
-      <p>Trova e prenota i tuoi biglietti per gli eventi più popolari qui.</p>
-      <a href="#" class="btn">Scopri gli eventi</a>
-    </section>
-    
-    <section id="featured-events">
-      <h2>Eventi in primo piano</h2>
-      <!-- Inserisci qui i tuoi eventi in primo piano -->
-    </section>
-    
-    <section id="upcoming-events">
-      <h2>Prossimi eventi</h2>
-      <!-- Inserisci qui i tuoi prossimi eventi -->
-    </section>
-  </main>
-  
-  <footer>
-    <p>&copy; 2023 Il tuo sito di biglietti. Tutti i diritti riservati.</p>
-  </footer>
+
+    <div class="event-container">
+        <div class="event-card">
+            <img class="event-image" src="immagini/Concerti.jpg" alt="Concerti">
+            <ul class="event-list">
+                <li class="event-list-item">
+                    <div class="event-details">
+                        <span class="event-date">20 Luglio 2023</span>
+                        <div class="event-info">
+                            <span class="event-title">Concerto Rock</span>
+                            <br>
+                            <span class="event-location">Teatro XYZ</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="event-list-item">
+                    <div class="event-details">
+                        <span class="event-date">25 Luglio 2023</span>
+                        <div class="event-info">
+                            <span class="event-title">Concerto Jazz</span>
+                            <br>
+                            <span class="event-location">Sala ABC</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="event-list-item">
+                    <div class="event-details">
+                        <span class="event-date">30 Luglio 2023</span>
+                        <div class="event-info">
+                            <span class="event-title">Concerto Pop</span>
+                            <br>
+                            <span class="event-location">Teatro 123</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="event-card">
+            <img class="event-image" src="immagini/Eventi.jpg" alt="Eventi">
+            <ul class="event-list">
+                <li class="event-list-item">
+                    <div class="event-details">
+                        <span class="event-date">10 Luglio 2023</span>
+                        <div class="event-info">
+                            <span class="event-title">Fiera dell'Arte</span>
+                            <br>
+                            <span class="event-location">Piazza QWE</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="event-list-item">
+                    <div class="event-details">
+                        <span class="event-date">15 Luglio 2023</span>
+                        <div class="event-info">
+                            <span class="event-title">Sfilata di Moda</span>
+                            <br>
+                            <span class="event-location">Via ZXC</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="event-list-item">
+                    <div class="event-details">
+                        <span class="event-date">20 Luglio 2023</span>
+                        <div class="event-info">
+                            <span class="event-title">Mostra d'Arte</span>
+                            <br>
+                            <span class="event-location">Galleria ASD</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="event-card">
+            <img class="event-image" src="immagini/Sport.jpg" alt="Sport">
+            <ul class="event-list">
+                <li class="event-list-item">
+                    <div class="event-details">
+                        <span class="event-date">5 Luglio 2023</span>
+                        <div class="event-info">
+                            <span class="event-title">Partita di Calcio</span>
+                            <br>
+                            <span class="event-location">Stadio ASD</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="event-list-item">
+                    <div class="event-details">
+                        <span class="event-date">12 Luglio 2023</span>
+                        <div class="event-info">
+                            <span class="event-title">Maratona di Milano</span>
+                            <br>
+                            <span class="event-location">Centro Città</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="event-list-item">
+                    <div class="event-details">
+                        <span class="event-date">18 Luglio 2023</span>
+                        <div class="event-info">
+                            <span class="event-title">Partita di Basket</span>
+                            <br>
+                            <span class="event-location">Palestra QAZ</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 id="concerts">Concerti</h2>
+    <p>Qui vengono elencati i concerti disponibili a Milano...</p>
+
+    <h2 id="events">Eventi</h2>
+    <p>Qui vengono elencati gli eventi disponibili a Milano...</p>
+
+    <h2 id="sports">Sport</h2>
+    <p>Qui vengono elencate le manifestazioni sportive disponibili a Milano...</p>
 </body>
 </html>
